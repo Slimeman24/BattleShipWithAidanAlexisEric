@@ -20,8 +20,9 @@ return (ptr);
 Ships(Type _type)
 {
 type=_type;    
+show=true;
 }
-public void draw()
+public void draw(Graphics2D g)
 {
 if(show)
 {
