@@ -210,8 +210,8 @@ public class BattleShip extends JFrame implements Runnable {
     }
 /////////////////////////////////////////////////////////////////////////
     public void reset() {
-
-
+        System.out.print("hi bob");               
+        
     }
 /////////////////////////////////////////////////////////////////////////
     public void animate() {
