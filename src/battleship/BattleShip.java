@@ -166,26 +166,24 @@ public class BattleShip extends JFrame implements Runnable {
                     Window.getWidth2()/Board.numColumns,
                     Window.getHeight2()/Board.numRows);
                 }  
-                if (Board.board[zrow][zcolumn] == Board.SEC && Board.secActive == false)
+       
+            }
+              
+        }
+        
+        for (int zrow=0;zrow<Board.numRows;zrow++)
+        {
+            for (int zcolumn=0;zcolumn<Board.numColumns;zcolumn++)
+            {
+                if (Board.board[zrow][zcolumn] == Board.SHIP)
                 {
-                    g.setColor(Color.gray);
+                    g.setColor(Color.red);
                     g.fillRect(Window.getX(0)+zcolumn*Window.getWidth2()/Board.numColumns,
                     Window.getY(0)+zrow*Window.getHeight2()/Board.numRows,
                     Window.getWidth2()/Board.numColumns,
                     Window.getHeight2()/Board.numRows);
                 }  
-                
-                if(Board.board[zrow][zcolumn] == Board.SEC && Board.secActive == true && score >= 10){ 
-                    
-                    
-                    g.setColor(Color.LIGHT_GRAY);
-                    g.fillRect(Window.getX(0)+zcolumn*Window.getWidth2()/Board.numColumns,
-                    Window.getY(0)+zrow*Window.getHeight2()/Board.numRows,
-                    Window.getWidth2()/Board.numColumns,
-                    Window.getHeight2()/Board.numRows);
-                      
-                
-                }
+       
             }
               
         }
@@ -229,8 +227,7 @@ public class BattleShip extends JFrame implements Runnable {
 //add or modify.  Have the player move along the path.
 
 
-
-                
+          Board.addShip(Ships.Direction.DOWN,3,1,1,1);
 
             
          
