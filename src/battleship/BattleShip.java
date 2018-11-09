@@ -118,6 +118,7 @@ public class BattleShip extends JFrame implements Runnable {
             g = (Graphics2D) image.getGraphics();
             g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                     RenderingHints.VALUE_ANTIALIAS_ON);
+            Drawing.setDrawingInfo(g,this);
         }
 //fill background
         g.setColor(Color.DARK_GRAY);
@@ -166,29 +167,12 @@ public class BattleShip extends JFrame implements Runnable {
                     Window.getWidth2()/Board.numColumns,
                     Window.getHeight2()/Board.numRows);
                 }  
-                if (Board.board[zrow][zcolumn] == Board.SEC && Board.secActive == false)
-                {
-                    g.setColor(Color.gray);
-                    g.fillRect(Window.getX(0)+zcolumn*Window.getWidth2()/Board.numColumns,
-                    Window.getY(0)+zrow*Window.getHeight2()/Board.numRows,
-                    Window.getWidth2()/Board.numColumns,
-                    Window.getHeight2()/Board.numRows);
-                }  
-                
-                if(Board.board[zrow][zcolumn] == Board.SEC && Board.secActive == true && score >= 10){ 
-                    
-                    
-                    g.setColor(Color.LIGHT_GRAY);
-                    g.fillRect(Window.getX(0)+zcolumn*Window.getWidth2()/Board.numColumns,
-                    Window.getY(0)+zrow*Window.getHeight2()/Board.numRows,
-                    Window.getWidth2()/Board.numColumns,
-                    Window.getHeight2()/Board.numRows);
-                      
-                
-                }
+
             }
               
         }
+        
+        Missiles.paint(g);
         
 
         gOld.drawImage(image, 0, 0, null);
@@ -221,7 +205,8 @@ public class BattleShip extends JFrame implements Runnable {
                 Window.xsize = getSize().width;
                 Window.ysize = getSize().height;
             }
-         
+         Missiles.setpictures();
+            
             reset();
 
         }
@@ -257,6 +242,8 @@ public class BattleShip extends JFrame implements Runnable {
         relaxer = null;
     }
 
+    
+    
 
 }
 
