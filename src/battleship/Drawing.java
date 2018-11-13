@@ -31,6 +31,7 @@ class Drawing {
         g.rotate(-rot  * Math.PI/180.0);
         g.translate(-xpos,-ypos);
     }
+
      public static void drawPlay(int xpos,int ypos,double rot,double xscale,double yscale,Color color)
     {
         g.translate(xpos,ypos);
@@ -68,6 +69,7 @@ class Drawing {
         g.rotate(-rot  * Math.PI/180.0);
         g.translate(-xpos,-ypos);
     }
+
 ////////////////////////////////////////////////////////////////////////////
     public static void drawImage(Image image,int xpos,int ypos,double rot,double xscale,
             double yscale) {
