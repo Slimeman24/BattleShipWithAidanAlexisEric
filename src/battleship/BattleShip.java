@@ -51,7 +51,7 @@ public class BattleShip extends JFrame implements Runnable {
 // location of the cursor.
                     int xpos = e.getX();
                     int ypos = e.getY();
-
+                    Board.addShip(Ships.Direction.DOWN,3,1,1,1);
                 }
                 if (e.BUTTON3 == e.getButton()) {
                     //right button
@@ -208,7 +208,7 @@ public class BattleShip extends JFrame implements Runnable {
     }
 /////////////////////////////////////////////////////////////////////////
     public void reset() {
-        System.out.print("hi bob");               
+    Board.reset();
         
     }
 /////////////////////////////////////////////////////////////////////////
@@ -227,7 +227,7 @@ public class BattleShip extends JFrame implements Runnable {
 //add or modify.  Have the player move along the path.
 
 
-          Board.addShip(Ships.Direction.DOWN,3,1,1,1);
+          
 
             
          

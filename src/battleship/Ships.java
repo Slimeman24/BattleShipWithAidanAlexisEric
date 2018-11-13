@@ -9,6 +9,7 @@ private int Long;
 private int tall;
 private int X;
 private int Y;
+private int HP=tall*Long;
 private static boolean show=true;
 
 
@@ -31,7 +32,7 @@ tall=_tall;
 X=_X;
 Y=_Y;
 setlocal();
-
+System.out.println(ships.size());
 
 
 
@@ -51,44 +52,51 @@ if(dir==Ships.Direction.DOWN)
 for(int zi=0;zi<Long;zi++)
 for(int zx=0;zx<tall;zx++)
 {    
-if(zx+tall!=Board.numRows)
+if(zx+tall<Board.numRows)
 Board.board[X+zi][Y+zx]=Board.SHIP; 
 else
+{
 System.out.println("you cant place it there");
-
-
+break;
+}
 }
 ////////////////////////////////////////////////////////////////////////////////
 else if(dir==Ships.Direction.UP)    
 for(int zi=0;zi<Long;zi++)
 for(int zx=0;zx<tall;zx++)
-if(zx-tall!=-1)    
+if(zx-tall>-1)    
 Board.board[X-zi][Y-zx]=Board.SHIP;    
 else
+{
 System.out.println("you cant place it there");
+break;
+}
 ////////////////////////////////////////////////////////////////////////////////
 else if(dir==Ships.Direction.RIGHT)    
 for(int zi=0;zi<Long;zi++)
 for(int zx=0;zx<tall;zx++)
-if(zi+Long!=Board.numColumns)    
+if(zi+Long<Board.numColumns)    
 Board.board[X+zx][Y+zi]=Board.SHIP;    
 else
+{
 System.out.println("you cant place it there");
+break;
+}
 ////////////////////////////////////////////////////////////////////////////////
 else if(dir==Ships.Direction.LEFT)    
 for(int zi=0;zi<Long;zi++)
 for(int zx=0;zx<tall;zx++)
-if(zi-Long!=-1)    
+if(zi-Long>-1)    
 Board.board[X-zx][Y-zi]=Board.SHIP;    
 else
+{
 System.out.println("you cant place it there");
-
+break;
 }
-
-
 }
-
-
-////////////////////////////////////////////////////////////////////////////////
-
-
+//reset
+public static void reset()
+{
+ships.clear();
+}
+}
