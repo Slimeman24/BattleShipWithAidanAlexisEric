@@ -49,11 +49,11 @@ public void setlocal()
 {
     
 if(dir==Ships.Direction.DOWN)    
-for(int zi=0;zi<Long;zi++)
-for(int zx=0;zx<tall;zx++)
+for(int zi=X;zi<X+Long;zi++)
+for(int zx=Y;zx<Y+tall;zx++)
 {    
-if(zx+tall<Board.numRows)
-Board.board[X+zi][Y+zx]=Board.SHIP; 
+if(zx-tall<Board.numRows&&zi+Long>-1&&zi+Long<Board.numColumns&&Board.board[zi][zx]==Board.PATH)
+Board.board[zi][zx]=Board.SHIP; 
 else
 {
 System.out.println("you cant place it there");
@@ -62,32 +62,36 @@ break;
 }
 ////////////////////////////////////////////////////////////////////////////////
 else if(dir==Ships.Direction.UP)    
-for(int zi=0;zi<Long;zi++)
-for(int zx=0;zx<tall;zx++)
-if(zx-tall>-1)    
-Board.board[X-zi][Y-zx]=Board.SHIP;    
+for(int zi=X;zi>X-Long;zi--)
+for(int zx=Y;zx<Y+tall;zx++)
+{    
+if(zx-tall<Board.numRows&&zi+Long<Board.numColumns&&zi+Long<Board.numColumns&&Board.board[zi][zx]==Board.PATH)
+Board.board[zi][zx]=Board.SHIP; 
 else
 {
 System.out.println("you cant place it there");
 break;
+}
 }
 ////////////////////////////////////////////////////////////////////////////////
 else if(dir==Ships.Direction.RIGHT)    
-for(int zi=0;zi<Long;zi++)
-for(int zx=0;zx<tall;zx++)
-if(zi+Long<Board.numColumns)    
-Board.board[X+zx][Y+zi]=Board.SHIP;    
+for(int zi=X;zi<X+Long;zi++)
+for(int zx=Y;zx<Y+tall;zx++)
+{    
+if(zx-tall>-1&&zx-tall<Board.numRows&&zi+Long<Board.numColumns&&zi+Long<Board.numColumns&&Board.board[zi][zx]==Board.PATH)
+Board.board[zi][zx]=Board.SHIP; 
 else
 {
 System.out.println("you cant place it there");
 break;
 }
+}
 ////////////////////////////////////////////////////////////////////////////////
 else if(dir==Ships.Direction.LEFT)    
-for(int zi=0;zi<Long;zi++)
-for(int zx=0;zx<tall;zx++)
-if(zi-Long>-1)    
-Board.board[X-zx][Y-zi]=Board.SHIP;    
+for(int zi=X;zi<X+Long;zi++)
+for(int zx=Y;zx>Y-tall;zx--)
+if(zx-tall>-1&&zx-tall<Board.numRows&&zi+Long<Board.numColumns&&zi+Long<Board.numColumns&&Board.board[zi][zx]==Board.PATH)
+Board.board[zi][zx]=Board.SHIP;    
 else
 {
 System.out.println("you cant place it there");

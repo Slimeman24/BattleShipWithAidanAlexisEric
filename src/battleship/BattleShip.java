@@ -51,7 +51,7 @@ public class BattleShip extends JFrame implements Runnable {
 // location of the cursor.
                     int xpos = e.getX();
                     int ypos = e.getY();
-                    Board.addShip(Ships.Direction.DOWN,3,1,1,1);
+                    Board.addShip(Ships.Direction.LEFT,5,5,3,3);
                 }
                 if (e.BUTTON3 == e.getButton()) {
                     //right button
