@@ -14,18 +14,17 @@ public class BattleShip extends JFrame implements Runnable {
     Image image;
     Graphics2D g;
 //Variables for the player.
-    int rowDir;
-    int columnDir;
-  //  int currentRow;
-  //  int currentColumn;
+   
+ 
     int timeCount;
      int score;
     int highScore = 0;
     boolean gameOver;
    
+    TitleScreen screen;
+    Image titlescreenImage;
     
-    Character player;
-    
+    boolean gameStart = false;
     
     int numNpcs = 4;
     int numCoins = 9;
@@ -51,6 +50,10 @@ public class BattleShip extends JFrame implements Runnable {
 // location of the cursor.
                     int xpos = e.getX();
                     int ypos = e.getY();
+                    
+                    
+                   TitleScreen.ifPClick(e.getX() - Window.getX(0),
+                            e.getY() - Window.getY(0),gameStart); 
 
                 }
                 if (e.BUTTON3 == e.getButton()) {
@@ -79,18 +82,14 @@ public class BattleShip extends JFrame implements Runnable {
             public void keyPressed(KeyEvent e) {
 //add or modify.  Move the player with the arrow keys.
                 if (e.VK_W == e.getKeyCode()) {
-                    rowDir = -1;
-                    columnDir = 0;
+                   
                     
                 } else if (e.VK_S == e.getKeyCode()) {
-                    rowDir = 1;
-                    columnDir = 0;
+                    
                 } else if (e.VK_A == e.getKeyCode()) {
-                    rowDir = 0;
-                    columnDir = -1;
+                    
                 } else if (e.VK_D == e.getKeyCode()) {
-                    rowDir = 0;
-                    columnDir = 1;
+                    
                 }
                 repaint();
             }
@@ -119,6 +118,15 @@ public class BattleShip extends JFrame implements Runnable {
             g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                     RenderingHints.VALUE_ANTIALIAS_ON);
         }
+        if (gameStart == false)
+        {
+       Drawing.setDrawingInfo(g, this);
+       
+        TitleScreen.draw(g, titlescreenImage, this);
+        }
+        
+        if(gameStart)
+        {
 //fill background
         g.setColor(Color.DARK_GRAY);
         g.fillRect(0, 0, Window.xsize, Window.ysize);
@@ -137,6 +145,7 @@ public class BattleShip extends JFrame implements Runnable {
             return;
         }
 
+         
         
         g.setColor(Color.DARK_GRAY);
 //horizontal lines
@@ -190,6 +199,8 @@ public class BattleShip extends JFrame implements Runnable {
               
         }
         
+     //   screen.draw(g, titlescreenImage, this);
+        }
 
         gOld.drawImage(image, 0, 0, null);
     }
@@ -221,12 +232,13 @@ public class BattleShip extends JFrame implements Runnable {
                 Window.xsize = getSize().width;
                 Window.ysize = getSize().height;
             }
+
+          titlescreenImage = Toolkit.getDefaultToolkit().getImage("./titlescreen.JPG");
          
             reset();
 
         }
         
-//add or modify.  Have the player move along the path.
 
 
 
@@ -241,7 +253,9 @@ public class BattleShip extends JFrame implements Runnable {
         
         
     }
-
+   
+////////////////////////////////////////////////////////////////////////////
+   
 ////////////////////////////////////////////////////////////////////////////
     public void start() {
         if (relaxer == null) {
