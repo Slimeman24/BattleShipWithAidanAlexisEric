@@ -70,7 +70,30 @@ static final int resetboard[][] = {
 ////////////////////////////////////////////////////////////////////////////////
     public static void addShip(Ships.Direction dir,Ships.TYPE type,int xpos, int ypos)
     {
-    Ships.create(dir,type,xpos,ypos);
+        
+        
+        
+    int currRow = 0;
+        int ydelta = Window.getHeight2()/numRows;
+        int currYVal = ydelta;
+        while (ypos > currYVal)
+        {
+            currRow++;
+            currYVal += ydelta;
+        }
+
+
+        int currCol = 0;
+        int xdelta = Window.getWidth2()/numColumns;
+        int currXVal = xdelta;
+        while (xpos > currXVal)
+        {
+            currCol++;
+            currXVal += xdelta;
+        }    
+        
+        System.out.println(xpos+" "+ypos+" "+currRow+" "+currCol);
+    Ships.create(dir,type,currRow,currCol);
     
     }        
 ////////////////////////////////////////////////////////////////////////////////    
@@ -78,9 +101,9 @@ static final int resetboard[][] = {
     {
     return board;    
     }        
-<<<<<<< HEAD
 
-=======
+
+
 ////////////////////////////////////////////////////////////////////////////////  
     public static void reset()
     {
@@ -88,7 +111,7 @@ static final int resetboard[][] = {
     board=resetboard;
     
     }
->>>>>>> 209ce9a1912344fc99c8ef925c8efc1c17a2e54a
+
 }
 
 

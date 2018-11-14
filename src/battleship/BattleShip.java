@@ -28,8 +28,7 @@ public class BattleShip extends JFrame implements Runnable {
     
     int numNpcs = 4;
     int numCoins = 9;
-   /// int npcRow[] = new int[numNpcs];
-   /// int npcColumn[] = new int[numNpcs];
+   
 
   
     
@@ -50,10 +49,10 @@ public class BattleShip extends JFrame implements Runnable {
 // location of the cursor.
                     int xpos = e.getX();
                     int ypos = e.getY();
-<<<<<<< HEAD
+
                     
                     TitleScreen.ifPClick(xpos, ypos);
-=======
+
 
                     
                     
@@ -61,9 +60,9 @@ public class BattleShip extends JFrame implements Runnable {
                             e.getY() - Window.getY(0),gameStart); 
 
 
-                    Board.addShip(Ships.Direction.LEFT,Ships.TYPE.thxon,3,3);
+                    Board.addShip(Ships.Direction.LEFT,Ships.TYPE.thxon,xpos,ypos);
 
->>>>>>> 209ce9a1912344fc99c8ef925c8efc1c17a2e54a
+
                 }
                 if (e.BUTTON3 == e.getButton()) {
                     //right button
@@ -81,7 +80,9 @@ public class BattleShip extends JFrame implements Runnable {
 
     addMouseMotionListener(new MouseMotionAdapter() {
       public void mouseMoved(MouseEvent e) {
-
+          int xpos = e.getX();
+          int ypos = e.getY();
+          Board.addShip(Ships.Direction.LEFT,Ships.TYPE.thxon,xpos,ypos);
         repaint();
       }
     });
@@ -208,13 +209,13 @@ public class BattleShip extends JFrame implements Runnable {
               
         }
         
-<<<<<<< HEAD
+
         Missiles.paint(g);
         
-=======
+
      //   screen.draw(g, titlescreenImage, this);
         }
->>>>>>> 209ce9a1912344fc99c8ef925c8efc1c17a2e54a
+
 
         gOld.drawImage(image, 0, 0, null);
     }
@@ -235,11 +236,9 @@ public class BattleShip extends JFrame implements Runnable {
     }
 /////////////////////////////////////////////////////////////////////////
     public void reset() {
-<<<<<<< HEAD
-   
-=======
+
     Board.reset();
->>>>>>> 209ce9a1912344fc99c8ef925c8efc1c17a2e54a
+
         
     }
 /////////////////////////////////////////////////////////////////////////
@@ -250,30 +249,29 @@ public class BattleShip extends JFrame implements Runnable {
                 Window.xsize = getSize().width;
                 Window.ysize = getSize().height;
             }
-<<<<<<< HEAD
          Missiles.setpictures();
             
-=======
+
 
           titlescreenImage = Toolkit.getDefaultToolkit().getImage("./titlescreen.JPG");
          
->>>>>>> 209ce9a1912344fc99c8ef925c8efc1c17a2e54a
+
             reset();
 
         }
         
 
 
-<<<<<<< HEAD
-          Board.addShip(Ships.Direction.DOWN,3,1,1,1);
+
+         
           
           
           Missiles.Create(Missiles.Type.NUKE);
 
-=======
+
      
   gameStart=true;
->>>>>>> 209ce9a1912344fc99c8ef925c8efc1c17a2e54a
+
             
          
           

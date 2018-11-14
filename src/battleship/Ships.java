@@ -55,7 +55,7 @@ if(dir==Ships.Direction.DOWN)
 for(int zi=X;zi<X+Long;zi++)
 for(int zx=Y;zx<Y+tall;zx++)
 {    
-if(zx-tall<Board.numRows&&zi+Long>-1&&zi+Long<Board.numColumns&&Board.board[zi][zx]==Board.PATH)
+if(zx+tall<Board.numRows&&zi+Long<Board.numColumns&&zi-Long>-1&&zx-tall>-1&&Board.board[zi][zx]==Board.PATH)
 Board.board[zi][zx]=Board.SHIP; 
 else
 {
@@ -68,7 +68,7 @@ else if(dir==Ships.Direction.UP)
 for(int zi=X;zi>X-Long;zi--)
 for(int zx=Y;zx<Y+tall;zx++)
 {    
-if(zx-tall<Board.numRows&&zi+Long<Board.numColumns&&zi+Long<Board.numColumns&&Board.board[zi][zx]==Board.PATH)
+if(zx+tall<Board.numRows&&zi+Long<Board.numColumns&&zi-Long>-1&&zx-tall>-1&&Board.board[zi][zx]==Board.PATH)
 Board.board[zi][zx]=Board.SHIP; 
 else
 {
@@ -81,7 +81,7 @@ else if(dir==Ships.Direction.RIGHT)
 for(int zi=X;zi<X+tall;zi++)
 for(int zx=Y;zx<Y+Long;zx++)
 {    
-if(zx-tall>-1&&zx-tall<Board.numRows&&zi+Long<Board.numColumns&&zi+Long<Board.numColumns&&Board.board[zi][zx]==Board.PATH)
+if(zx+tall<Board.numRows&&zi+Long<Board.numColumns&&zi-Long>-1&&zx-tall>-1&&Board.board[zi][zx]==Board.PATH)
 Board.board[zi][zx]=Board.SHIP; 
 else
 {
@@ -93,16 +93,11 @@ break;
 else if(dir==Ships.Direction.LEFT)    
 for(int zi=X;zi<X+tall;zi++)
 for(int zx=Y;zx>Y-Long;zx--)
-if(zx-tall>-1&&zx-tall<Board.numRows&&zi+Long<Board.numColumns&&zi+Long<Board.numColumns&&Board.board[zi][zx]==Board.PATH)
+if(zx+tall<Board.numRows&&zi+Long<Board.numColumns&&zi-Long>-1&&zx-tall>-1&&Board.board[zi][zx]==Board.PATH)
 Board.board[zi][zx]=Board.SHIP;    
 else
 {
 System.out.println("you cant place it there");
-<<<<<<< HEAD
-
-
-
-=======
 break;
 }
 }
@@ -110,7 +105,7 @@ break;
 public static void reset()
 {
 ships.clear();
->>>>>>> 209ce9a1912344fc99c8ef925c8efc1c17a2e54a
+
 }
 
 
@@ -129,15 +124,6 @@ Long=2;
 tall=1;
 }  
 
-<<<<<<< HEAD
-}
-
-
-
-
-////////////////////////////////////////////////////////////////////////////////
-
-=======
 else if(type==TYPE.thxon)
 {
 Long=3;
@@ -147,4 +133,4 @@ tall=1;
 }
 ////////////////////////////////////////////////////////////////////////////////
 }
->>>>>>> 209ce9a1912344fc99c8ef925c8efc1c17a2e54a
+

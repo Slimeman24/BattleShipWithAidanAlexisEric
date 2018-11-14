@@ -10,7 +10,7 @@ import javax.swing.*;
 
 public class TitleScreen {
     
-<<<<<<< HEAD
+
     
     
     
@@ -39,14 +39,14 @@ public class TitleScreen {
                Missiles.changeLeft();
             }
            
- 
-=======
+    }
+
    private static int  PlayXPOS = Window.getWidth2()/2 -80;
    private static int  PlayYPOS = Window.getHeight2()/3 * 2;
    
    private static int  HTPXPOS = Window.getWidth2()/2 -80;
    private static int  HTPYPOS = Window.getHeight2()/4 * 3;
-    
+ 
    
     TitleScreen ()
     {
@@ -117,6 +117,6 @@ public class TitleScreen {
             }
 
            
->>>>>>> 209ce9a1912344fc99c8ef925c8efc1c17a2e54a
+
     }
 }
