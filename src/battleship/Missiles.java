@@ -12,15 +12,11 @@ import javax.sound.sampled.*;
 
 
 public class Missiles{
-    public static Image pic1;
-    public static Image pic2;
-    public static Image pic3;
-    public static Image pic4;
-    public static Image pic5;
-    public static Image pic6;
+    private ArrayList<Image> images = new ArrayList<Image>(); 
+    public static Image Whole;
     private static ArrayList<Missiles> missiles = new ArrayList<Missiles>(); 
     private Type MissileType;
-    private Image pic;
+    public static Image pic;
     
     
     public static enum Type {
@@ -29,16 +25,12 @@ public class Missiles{
    
     Missiles (Type type){
         MissileType = type;
+        images.add(getImage(MissileType));
+        
     }
     
     public static void setpictures(){
-       pic1 = Toolkit.getDefaultToolkit().getImage("./TNT.PNG");
-       pic2 = Toolkit.getDefaultToolkit().getImage("./Turtle.PNG");
-       pic3 = Toolkit.getDefaultToolkit().getImage("./MB.GIF");
-       pic4 = Toolkit.getDefaultToolkit().getImage("./NR.PNG");
-       pic5 = Toolkit.getDefaultToolkit().getImage("./R.PNG");
-       pic6 = Toolkit.getDefaultToolkit().getImage("./Song.MP4");
-       
+       Whole = Toolkit.getDefaultToolkit().getImage("./BlackH.JPG");
        
     }
     
@@ -51,34 +43,85 @@ public class Missiles{
     
     public static void paint(Graphics2D g) {
         g.setColor(Color.yellow);
-        Drawing.drawImage(pic1, 300, 300, 0,1, 1);
-        Drawing.drawImage(pic2, 600, 300, 0,1, 1);
-        Drawing.drawImage(pic4, 600, 600, 0,1, 1);
-        Drawing.drawImage(pic6, 300, 600, 0,1, 1);
+        
+        pic = Toolkit.getDefaultToolkit().getImage("./R.PNG");
+        Drawing.drawImage(Whole, Window.getWidth2()-20, 80, 0, .1, .1);
+        Drawing.drawImage(pic, Window.getWidth2()-20, Window.getHeight2()/2, 0, .1, .1);
+
+        g.setColor(Color.blue);        
+        drawArrow(Window.getWidth2()-25,Window.getHeight2()/2 +90,0,3,2,g);
+        drawArrow(Window.getWidth2()-25,Window.getHeight2()/2 -90,180,3,2,g);
     }
 
 
-   public void drawRockets(Graphics2D g,Image image, BattleShip obj,int xpos,int ypos,double rot,double xscale,double yscale)
+////////////////////////////////////////////////////////////////////////////
+    public static void drawArrow(int xpos,int ypos,double rot,double xscale,double yscale, Graphics2D g)
     {
         g.translate(xpos,ypos);
         g.rotate(rot  * Math.PI/180.0);
         g.scale( xscale , yscale );
-
-//        int xval[] = {1,1,-1,-1,1};
-//        int yval[] = {-1,1,1,-1,-1};
-//        g.fillPolygon(xval,yval,xval.length);
-            g.drawImage(image,-1,-1,2,2,obj);
-
-        
+        int xvals2 [] = {0,10,5,5,-5,-5,-10,0};
+        int yvals2 [] = {30,0,0,-30,-30,0,0,30}; 
+        g.fillPolygon(xvals2,yvals2,xvals2.length);
         g.scale( 1.0/xscale,1.0/yscale );
         g.rotate(-rot  * Math.PI/180.0);
         g.translate(-xpos,-ypos);
-    }    
+    
+        g.setColor(Color.BLUE);
+
+    }
+    
    
+    public Image getImage(Type type)
+    {
+        if (type == Missiles.Type.NUKE)
+            return Toolkit.getDefaultToolkit().getImage("./TNT.PNG");
+        else if (type == Missiles.Type.NORMAL)
+            return Toolkit.getDefaultToolkit().getImage("./R.PNG");
+        else if (type == Missiles.Type.RANDOM)
+            return Toolkit.getDefaultToolkit().getImage("./Joe.GIF");
+        else if (type == Missiles.Type.SlowTurtle)
+            return Toolkit.getDefaultToolkit().getImage("./Turtle.PNG");
+        else if (type == Missiles.Type.YEEMISSILE)
+            return Toolkit.getDefaultToolkit().getImage("./Yoda.PNG");
+        else if (type == Missiles.Type.REVEAL)
+            return Toolkit.getDefaultToolkit().getImage("./R.PNG");
 
+        
+        return null;
+    }
 
+        public static Image getIm(Type type)
+    {
+        if (type == Missiles.Type.NUKE)
+            return Toolkit.getDefaultToolkit().getImage("./TNT.PNG");
+        else if (type == Missiles.Type.NORMAL)
+            return Toolkit.getDefaultToolkit().getImage("./R.PNG");
+        else if (type == Missiles.Type.RANDOM)
+            return Toolkit.getDefaultToolkit().getImage("./Joe.GIF");
+        else if (type == Missiles.Type.SlowTurtle)
+            return Toolkit.getDefaultToolkit().getImage("./Turtle.PNG");
+        else if (type == Missiles.Type.YEEMISSILE)
+            return Toolkit.getDefaultToolkit().getImage("./Yoda.PNG");
+        else if (type == Missiles.Type.REVEAL)
+            return Toolkit.getDefaultToolkit().getImage("./R.PNG");
 
-
+        
+        return null;
+    }
+        
+        public static void changeRight(){
+        
+        
+        
+        }
+        
+        public static void changeLeft(){
+        
+        
+        
+        }
+    
 
 
 }
