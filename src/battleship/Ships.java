@@ -9,6 +9,7 @@ private int Long;
 private int tall;
 private int X;
 private int Y;
+private TYPE type;
 private int HP=tall*Long;
 private static boolean show=true;
 
@@ -17,22 +18,25 @@ private static boolean show=true;
 public static enum Direction {
         LEFT,RIGHT,UP,DOWN
     }; 
+public static enum TYPE {
+        thxon,twxon,onxon,
+    }; 
 ////////////////////////////////////////////////////////////////////////////////
-public static Ships create(Direction _dir,int _long,int _tall, int _X,int _Y)
+public static Ships create(Direction _dir,TYPE _type,int _X, int _Y)
 {
-Ships ptr = new Ships(_dir,_long,_tall,_X,_Y);
+Ships ptr = new Ships(_dir,_type,_X,_Y);
 ships.add(ptr);
 return (ptr);    
 }         
-Ships(Direction _dir,int _long,int _tall,int _X,int _Y)
+Ships(Direction _dir,TYPE _type,int _X,int _Y)
 {
 dir=_dir;   
-Long=_long;
-tall=_tall;
+type=_type;
 X=_X;
 Y=_Y;
+setSize();
 setlocal();
-System.out.println(ships.size());
+
 
 
 
@@ -75,8 +79,8 @@ break;
 }
 ////////////////////////////////////////////////////////////////////////////////
 else if(dir==Ships.Direction.RIGHT)    
-for(int zi=X;zi<X+Long;zi++)
-for(int zx=Y;zx<Y+tall;zx++)
+for(int zi=X;zi<X+tall;zi++)
+for(int zx=Y;zx<Y+Long;zx++)
 {    
 if(zx-tall>-1&&zx-tall<Board.numRows&&zi+Long<Board.numColumns&&zi+Long<Board.numColumns&&Board.board[zi][zx]==Board.PATH)
 Board.board[zi][zx]=Board.SHIP; 
@@ -88,8 +92,8 @@ break;
 }
 ////////////////////////////////////////////////////////////////////////////////
 else if(dir==Ships.Direction.LEFT)    
-for(int zi=X;zi<X+Long;zi++)
-for(int zx=Y;zx>Y-tall;zx--)
+for(int zi=X;zi<X+tall;zi++)
+for(int zx=Y;zx>Y-Long;zx--)
 if(zx-tall>-1&&zx-tall<Board.numRows&&zi+Long<Board.numColumns&&zi+Long<Board.numColumns&&Board.board[zi][zx]==Board.PATH)
 Board.board[zi][zx]=Board.SHIP;    
 else
@@ -103,4 +107,29 @@ public static void reset()
 {
 ships.clear();
 }
+
+
+public void setSize()
+{
+    
+if(type==TYPE.onxon)
+{
+Long=1;
+tall=1;
+}   
+
+else if(type==TYPE.twxon)
+{
+Long=2;
+tall=1;
+}  
+
+else if(type==TYPE.thxon)
+{
+Long=3;
+tall=1;
+}  
+
+}
+////////////////////////////////////////////////////////////////////////////////
 }

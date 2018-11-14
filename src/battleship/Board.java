@@ -69,9 +69,9 @@ static final int resetboard[][] = {
  
     
 ////////////////////////////////////////////////////////////////////////////////
-    public static void addShip(Ships.Direction dir,int length,int width,int xpos, int ypos)
+    public static void addShip(Ships.Direction dir,Ships.TYPE type,int xpos, int ypos)
     {
-    Ships.create(dir,length,width,xpos,ypos);
+    Ships.create(dir,type,xpos,ypos);
     
     }        
 ////////////////////////////////////////////////////////////////////////////////    

@@ -57,7 +57,7 @@ public class BattleShip extends JFrame implements Runnable {
                             e.getY() - Window.getY(0),gameStart); 
 
 
-                    Board.addShip(Ships.Direction.LEFT,5,5,3,3);
+                    Board.addShip(Ships.Direction.LEFT,Ships.TYPE.thxon,3,3);
 
                 }
                 if (e.BUTTON3 == e.getButton()) {
@@ -243,8 +243,8 @@ public class BattleShip extends JFrame implements Runnable {
         
 
 
-          
-
+     
+  gameStart=true;
             
          
           
