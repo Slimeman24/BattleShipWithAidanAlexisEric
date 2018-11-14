@@ -31,6 +31,45 @@ class Drawing {
         g.rotate(-rot  * Math.PI/180.0);
         g.translate(-xpos,-ypos);
     }
+
+     public static void drawPlay(int xpos,int ypos,double rot,double xscale,double yscale,Color color)
+    {
+        g.translate(xpos,ypos);
+        g.rotate(rot  * Math.PI/180.0);
+        g.scale( xscale , yscale );
+
+        g.setColor(color);
+        g.fillRect(1,1,160,50);
+        
+        g.setColor(Color.white);
+        g.setFont(new Font("Arial",Font.PLAIN,35));
+        g.drawString("Play", 50, 38);        
+
+        
+        
+        
+        g.scale( 1.0/xscale,1.0/yscale );
+        g.rotate(-rot  * Math.PI/180.0);
+        g.translate(-xpos,-ypos);
+    }
+      public static void drawHTP(int xpos,int ypos,double rot,double xscale,double yscale,Color color)
+    {
+        g.translate(xpos,ypos);
+        g.rotate(rot  * Math.PI/180.0);
+        g.scale( xscale , yscale );
+
+        g.setColor(color);
+        g.fillRect(1,1,160,50);
+        
+        g.setColor(Color.white);
+        g.setFont(new Font("Arial",Font.PLAIN,25));
+        g.drawString("How To Play", 10, 36);        
+
+        g.scale( 1.0/xscale,1.0/yscale );
+        g.rotate(-rot  * Math.PI/180.0);
+        g.translate(-xpos,-ypos);
+    }
+
 ////////////////////////////////////////////////////////////////////////////
     public static void drawImage(Image image,int xpos,int ypos,double rot,double xscale,
             double yscale) {

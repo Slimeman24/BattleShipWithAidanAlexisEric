@@ -14,18 +14,17 @@ public class BattleShip extends JFrame implements Runnable {
     Image image;
     Graphics2D g;
 //Variables for the player.
-    int rowDir;
-    int columnDir;
-  //  int currentRow;
-  //  int currentColumn;
+   
+ 
     int timeCount;
      int score;
     int highScore = 0;
     boolean gameOver;
    
+    TitleScreen screen;
+    Image titlescreenImage;
     
-    Character player;
-    
+    boolean gameStart = false;
     
     int numNpcs = 4;
     int numCoins = 9;
@@ -51,8 +50,20 @@ public class BattleShip extends JFrame implements Runnable {
 // location of the cursor.
                     int xpos = e.getX();
                     int ypos = e.getY();
+<<<<<<< HEAD
                     
                     TitleScreen.ifPClick(xpos, ypos);
+=======
+
+                    
+                    
+                   TitleScreen.ifPClick(e.getX() - Window.getX(0),
+                            e.getY() - Window.getY(0),gameStart); 
+
+
+                    Board.addShip(Ships.Direction.LEFT,Ships.TYPE.thxon,3,3);
+
+>>>>>>> 209ce9a1912344fc99c8ef925c8efc1c17a2e54a
                 }
                 if (e.BUTTON3 == e.getButton()) {
                     //right button
@@ -80,18 +91,14 @@ public class BattleShip extends JFrame implements Runnable {
             public void keyPressed(KeyEvent e) {
 //add or modify.  Move the player with the arrow keys.
                 if (e.VK_W == e.getKeyCode()) {
-                    rowDir = -1;
-                    columnDir = 0;
+                   
                     
                 } else if (e.VK_S == e.getKeyCode()) {
-                    rowDir = 1;
-                    columnDir = 0;
+                    
                 } else if (e.VK_A == e.getKeyCode()) {
-                    rowDir = 0;
-                    columnDir = -1;
+                    
                 } else if (e.VK_D == e.getKeyCode()) {
-                    rowDir = 0;
-                    columnDir = 1;
+                    
                 }
                 repaint();
             }
@@ -121,6 +128,15 @@ public class BattleShip extends JFrame implements Runnable {
                     RenderingHints.VALUE_ANTIALIAS_ON);
             Drawing.setDrawingInfo(g,this);
         }
+        if (gameStart == false)
+        {
+       Drawing.setDrawingInfo(g, this);
+       
+        TitleScreen.draw(g, titlescreenImage, this);
+        }
+        
+        if(gameStart)
+        {
 //fill background
         g.setColor(Color.DARK_GRAY);
         g.fillRect(0, 0, Window.xsize, Window.ysize);
@@ -139,6 +155,7 @@ public class BattleShip extends JFrame implements Runnable {
             return;
         }
 
+         
         
         g.setColor(Color.DARK_GRAY);
 //horizontal lines
@@ -191,8 +208,13 @@ public class BattleShip extends JFrame implements Runnable {
               
         }
         
+<<<<<<< HEAD
         Missiles.paint(g);
         
+=======
+     //   screen.draw(g, titlescreenImage, this);
+        }
+>>>>>>> 209ce9a1912344fc99c8ef925c8efc1c17a2e54a
 
         gOld.drawImage(image, 0, 0, null);
     }
@@ -213,7 +235,11 @@ public class BattleShip extends JFrame implements Runnable {
     }
 /////////////////////////////////////////////////////////////////////////
     public void reset() {
+<<<<<<< HEAD
    
+=======
+    Board.reset();
+>>>>>>> 209ce9a1912344fc99c8ef925c8efc1c17a2e54a
         
     }
 /////////////////////////////////////////////////////////////////////////
@@ -224,20 +250,30 @@ public class BattleShip extends JFrame implements Runnable {
                 Window.xsize = getSize().width;
                 Window.ysize = getSize().height;
             }
+<<<<<<< HEAD
          Missiles.setpictures();
             
+=======
+
+          titlescreenImage = Toolkit.getDefaultToolkit().getImage("./titlescreen.JPG");
+         
+>>>>>>> 209ce9a1912344fc99c8ef925c8efc1c17a2e54a
             reset();
 
         }
         
-//add or modify.  Have the player move along the path.
 
 
+<<<<<<< HEAD
           Board.addShip(Ships.Direction.DOWN,3,1,1,1);
           
           
           Missiles.Create(Missiles.Type.NUKE);
 
+=======
+     
+  gameStart=true;
+>>>>>>> 209ce9a1912344fc99c8ef925c8efc1c17a2e54a
             
          
           
@@ -247,7 +283,9 @@ public class BattleShip extends JFrame implements Runnable {
         
         
     }
-
+   
+////////////////////////////////////////////////////////////////////////////
+   
 ////////////////////////////////////////////////////////////////////////////
     public void start() {
         if (relaxer == null) {

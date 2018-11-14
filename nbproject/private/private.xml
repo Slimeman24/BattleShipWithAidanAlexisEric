@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/149003873/Desktop/BattleShipWithAidanAlexisEric/src/battleship/Window.java</file>
             <file>file:/C:/Users/149003873/Desktop/BattleShipWithAidanAlexisEric/src/battleship/Board.java</file>
             <file>file:/C:/Users/149003873/Desktop/BattleShipWithAidanAlexisEric/src/battleship/Drawing.java</file>
@@ -11,6 +12,15 @@
             <file>file:/C:/Users/149003873/Desktop/BattleShipWithAidanAlexisEric/src/battleship/TitleScreen.java</file>
             <file>file:/C:/Users/149003873/Desktop/BattleShipWithAidanAlexisEric/src/battleship/Ships.java</file>
             <file>file:/C:/Users/149003873/Desktop/BattleShipWithAidanAlexisEric/src/battleship/Sound.java</file>
+=======
+            <file>file:/C:/Users/150003278/Desktop/CS2%20github/BattleShipWithAidanAlexisEric/src/battleship/Board.java</file>
+            <file>file:/C:/Users/150003278/Desktop/CS2%20github/BattleShipWithAidanAlexisEric/src/battleship/Window.java</file>
+            <file>file:/C:/Users/150003278/Desktop/CS2%20github/BattleShipWithAidanAlexisEric/src/battleship/Ships.java</file>
+            <file>file:/C:/Users/150003278/Desktop/CS2%20github/BattleShipWithAidanAlexisEric/src/battleship/Sound.java</file>
+            <file>file:/C:/Users/150003278/Desktop/CS2%20github/BattleShipWithAidanAlexisEric/src/battleship/Drawing.java</file>
+            <file>file:/C:/Users/150003278/Desktop/CS2%20github/BattleShipWithAidanAlexisEric/src/battleship/TitleScreen.java</file>
+            <file>file:/C:/Users/150003278/Desktop/CS2%20github/BattleShipWithAidanAlexisEric/src/battleship/BattleShip.java</file>
+>>>>>>> 209ce9a1912344fc99c8ef925c8efc1c17a2e54a
         </group>
     </open-files>
 </project-private>

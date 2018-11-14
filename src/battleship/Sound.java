@@ -1,8 +1,14 @@
+<<<<<<< HEAD
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+=======
+
+
+
+>>>>>>> 209ce9a1912344fc99c8ef925c8efc1c17a2e54a
 package battleship;
 import java.io.*;
 import java.awt.*;
@@ -52,4 +58,10 @@ class sound implements Runnable {
         }
     }
 
+<<<<<<< HEAD
 }
+=======
+
+}
+
+>>>>>>> 209ce9a1912344fc99c8ef925c8efc1c17a2e54a
