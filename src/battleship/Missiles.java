@@ -17,6 +17,7 @@ public class Missiles{
     private static ArrayList<Missiles> missiles = new ArrayList<Missiles>(); 
     private Type MissileType;
     public static Image pic;
+    public static Graphics2D g; 
     
     
     public static enum Type {
@@ -31,7 +32,7 @@ public class Missiles{
     
     public static void setpictures(){
        Whole = Toolkit.getDefaultToolkit().getImage("./BlackH.JPG");
-       
+       pic = Toolkit.getDefaultToolkit().getImage("./R.PNG");
     }
     
     public static Missiles Create(Type type)
@@ -41,13 +42,19 @@ public class Missiles{
         return (ptr);    
     }   
     
-    public static void paint(Graphics2D g) {
-        g.setColor(Color.yellow);
+    public static void paint(Graphics2D _g) {
+        g = _g;
         
-        pic = Toolkit.getDefaultToolkit().getImage("./R.PNG");
+        g.setColor(Color.yellow);
         Drawing.drawImage(Whole, Window.getWidth2()-20, 80, 0, .1, .1);
+        
+        
         Drawing.drawImage(pic, Window.getWidth2()-20, Window.getHeight2()/2, 0, .1, .1);
-
+        if (pic==Toolkit.getDefaultToolkit().getImage("./Turtle.PNG") || pic == Toolkit.getDefaultToolkit().getImage("./Joe.GIF"))
+            Drawing.drawImage(pic, Window.getWidth2()-20, Window.getHeight2()/2, 0, .5, .5);
+        else if (pic ==Toolkit.getDefaultToolkit().getImage("./TNT.PNG"))
+            Drawing.drawImage(pic, Window.getWidth2()-20, Window.getHeight2()/2, 0, .2, .2);
+        
         g.setColor(Color.blue);        
         drawArrow(Window.getWidth2()-25,Window.getHeight2()/2 +90,0,3,2,g);
         drawArrow(Window.getWidth2()-25,Window.getHeight2()/2 -90,180,3,2,g);
@@ -111,15 +118,31 @@ public class Missiles{
     }
         
         public static void changeRight(){
-        
-        
-        
+        if (pic ==Toolkit.getDefaultToolkit().getImage("./R.PNG"))
+            pic = Toolkit.getDefaultToolkit().getImage("./Turtle.PNG");
+        else if (pic ==Toolkit.getDefaultToolkit().getImage("./Turtle.PNG"))
+            pic = Toolkit.getDefaultToolkit().getImage("./Joe.GIF");
+        else if (pic == Toolkit.getDefaultToolkit().getImage("./Joe.GIF"))
+            pic = Toolkit.getDefaultToolkit().getImage("./Yoda.PNG");
+        else if (pic ==Toolkit.getDefaultToolkit().getImage("./Yoda.PNG"))
+            pic =Toolkit.getDefaultToolkit().getImage("./TNT.PNG");
+        else if (pic ==Toolkit.getDefaultToolkit().getImage("./TNT.PNG"))
+            pic =Toolkit.getDefaultToolkit().getImage("./R.PNG");
+
         }
         
         public static void changeLeft(){
         
-        
-        
+        if (pic ==Toolkit.getDefaultToolkit().getImage("./TNT.PNG"))
+            pic =Toolkit.getDefaultToolkit().getImage("./Yoda.PNG");
+        else if (pic ==Toolkit.getDefaultToolkit().getImage("./Yoda.PNG"))
+            pic = Toolkit.getDefaultToolkit().getImage("./Joe.GIF");
+        else if (pic == Toolkit.getDefaultToolkit().getImage("./Joe.GIF"))
+            pic = Toolkit.getDefaultToolkit().getImage("./Turtle.PNG");
+        else if (pic ==Toolkit.getDefaultToolkit().getImage("./Turtle.PNG"))
+            pic = Toolkit.getDefaultToolkit().getImage("./R.PNG");
+        else if (pic ==Toolkit.getDefaultToolkit().getImage("./R.PNG"))
+            pic =Toolkit.getDefaultToolkit().getImage("./TNT.PNG");
         }
     
 
