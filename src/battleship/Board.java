@@ -71,29 +71,24 @@ static final int resetboard[][] = {
     public static void addShip(Ships.Direction dir,Ships.TYPE type,int xpos, int ypos)
     {
         
-        
-        
-    int currRow = 0;
-        int ydelta = Window.getHeight2()/numRows;
-        int currYVal = ydelta;
-        while (ypos > currYVal)
+      for (int zi=1;zi<Board.numColumns;zi++)
+        {  
+  for (int zx=1;zx<Board.numRows;zx++)    
+        {      
+            
+        int left=Window.getX(0)+zi*Window.getWidth2()/Board.numColumns;
+        int right=Window.getX(0)+(zi+1)*Window.getWidth2()/Board.numColumns;
+        if (xpos>left&&xpos<right)
         {
-            currRow++;
-            currYVal += ydelta;
+        if(board[zx][zi]==PATH)
+        {
+        Ships.create(dir,type,zx,zi);
         }
-
-
-        int currCol = 0;
-        int xdelta = Window.getWidth2()/numColumns;
-        int currXVal = xdelta;
-        while (xpos > currXVal)
-        {
-            currCol++;
-            currXVal += xdelta;
-        }    
+        }
+        }
+        }
         
-        System.out.println(xpos+" "+ypos+" "+currRow+" "+currCol);
-    Ships.create(dir,type,currRow,currCol);
+        
     
     }        
 ////////////////////////////////////////////////////////////////////////////////    
@@ -108,7 +103,9 @@ static final int resetboard[][] = {
     public static void reset()
     {
     Ships.reset();
-    board=resetboard;
+    for (int zi=1;zi<Board.numColumns;zi++)
+    for (int zx=1;zx<Board.numRows;zx++)       
+    board[zx][zi]=resetboard[zx][zi];
     
     }
 
