@@ -73,16 +73,19 @@ static final int resetboard[][] = {
         
       for (int zi=1;zi<Board.numColumns;zi++)
         {  
-  for (int zx=1;zx<Board.numRows;zx++)    
+  for (int zx=numRows/2;zx<Board.numRows;zx++)    
         {      
             
         int left=Window.getX(0)+zi*Window.getWidth2()/Board.numColumns;
         int right=Window.getX(0)+(zi+1)*Window.getWidth2()/Board.numColumns;
-        if (xpos>left&&xpos<right)
+        int top=Window.getY(0)+zx*Window.getHeight2()/Board.numRows;
+        int bottom=Window.getY(0)+(zx+1)*Window.getHeight2()/Board.numRows;
+        if (xpos>left&&xpos<right&&ypos>top&&ypos<bottom)
         {
         if(board[zx][zi]==PATH)
         {
         Ships.create(dir,type,zx,zi);
+        break;
         }
         }
         }
@@ -103,8 +106,8 @@ static final int resetboard[][] = {
     public static void reset()
     {
     Ships.reset();
-    for (int zi=1;zi<Board.numColumns;zi++)
-    for (int zx=1;zx<Board.numRows;zx++)       
+    for (int zi=0;zi<Board.numColumns;zi++)
+    for (int zx=0;zx<Board.numRows;zx++)       
     board[zx][zi]=resetboard[zx][zi];
     
     }

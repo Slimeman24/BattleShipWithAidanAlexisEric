@@ -21,13 +21,13 @@ public static enum TYPE {
         thxon,twxon,onxon,
     }; 
 ////////////////////////////////////////////////////////////////////////////////
-public static Ships create(Direction _dir,TYPE _type,int _X, int _Y)
+public static Ships create(Direction _dir,TYPE _type,int _Y, int _X)
 {
-Ships ptr = new Ships(_dir,_type,_X,_Y);
+Ships ptr = new Ships(_dir,_type,_Y,_X);
 ships.add(ptr);
 return (ptr);    
 }         
-Ships(Direction _dir,TYPE _type,int _X,int _Y)
+Ships(Direction _dir,TYPE _type,int _Y,int _X)
 {
 dir=_dir;   
 type=_type;
@@ -51,55 +51,39 @@ show=is;
 public void setlocal()
 {
     
-if(dir==Ships.Direction.DOWN)    
+if(dir==Ships.Direction.DOWN)
+{    
+if(Y+(tall-1)<Board.numRows&&Board.board[Y][X]==Board.PATH&&Board.board[Y+(tall-1)][X]==Board.PATH)     
 for(int zi=X;zi<X+Long;zi++)
 for(int zx=Y;zx<Y+tall;zx++)
-{    
-if(zx+tall<Board.numRows&&zi+Long<Board.numColumns&&zi-Long>-1&&zx-tall>-1&&Board.board[zi][zx]==Board.PATH)
-Board.board[zi][zx]=Board.SHIP; 
-else
-{
-System.out.println("you cant place it there");
-break;
-}
+Board.board[zx][zi]=Board.SHIP; 
 }
 ////////////////////////////////////////////////////////////////////////////////
-else if(dir==Ships.Direction.UP)    
-for(int zi=X;zi>X-Long;zi--)
-for(int zx=Y;zx<Y+tall;zx++)
-{    
-if(zx+tall<Board.numRows&&zi+Long<Board.numColumns&&zi-Long>-1&&zx-tall>-1&&Board.board[zi][zx]==Board.PATH)
-Board.board[zi][zx]=Board.SHIP; 
-else
+else if(dir==Ships.Direction.UP) 
 {
-System.out.println("you cant place it there");
-break;
-}
+if(Y-(tall-1)>-1&&Board.board[Y][X]==Board.PATH&&Board.board[Y-(tall-1)][X]==Board.PATH)
+for(int zi=X;zi<X+Long;zi++)
+for(int zx=Y;zx>Y-tall;zx--)
+Board.board[zx][zi]=Board.SHIP; 
 }
 ////////////////////////////////////////////////////////////////////////////////
-else if(dir==Ships.Direction.RIGHT)    
-for(int zi=X;zi<X+tall;zi++)
-for(int zx=Y;zx<Y+Long;zx++)
-{    
-if(zx+tall<Board.numRows&&zi+Long<Board.numColumns&&zi-Long>-1&&zx-tall>-1&&Board.board[zi][zx]==Board.PATH)
-Board.board[zi][zx]=Board.SHIP; 
-else
+else if(dir==Ships.Direction.RIGHT)   
 {
-System.out.println("you cant place it there");
-break;
-}
+if(X+(Long-1)<Board.numColumns&&Board.board[Y][X]==Board.PATH&&Board.board[Y][X+(Long-1)]==Board.PATH)      
+for(int zi=Y;zi<Y+tall;zi++)
+for(int zx=X;zx<X+Long;zx++)
+Board.board[zi][zx]=Board.SHIP; 
 }
 ////////////////////////////////////////////////////////////////////////////////
-else if(dir==Ships.Direction.LEFT)    
-for(int zi=X;zi<X+tall;zi++)
-for(int zx=Y;zx>Y-Long;zx--)
-if(zx+tall<Board.numRows&&zi+Long<Board.numColumns&&zi-Long>-1&&zx-tall>-1&&Board.board[zi][zx]==Board.PATH)
+else if(dir==Ships.Direction.LEFT)
+{    
+if(X-(Long-1)>-1&&Board.board[Y][X]==Board.PATH&&Board.board[Y][X-(Long-1)]==Board.PATH)    
+for(int zi=Y;zi<Y+tall;zi++)
+for(int zx=X;zx>X-Long;zx--)
 Board.board[zi][zx]=Board.SHIP;    
-else
-{
-System.out.println("you cant place it there");
-break;
 }
+
+
 }
 //reset
 public static void reset()
@@ -120,14 +104,26 @@ tall=1;
 
 else if(type==TYPE.twxon)
 {
+if(dir==Direction.LEFT||dir==Direction.RIGHT)
+{
 Long=2;
 tall=1;
+}
+else
+Long=1;
+tall=2;    
 }  
 
 else if(type==TYPE.thxon)
 {
+if(dir==Direction.LEFT||dir==Direction.RIGHT)
+{
 Long=3;
 tall=1;
+}
+else
+Long=1;
+tall=3;  
 }  
 
 }

@@ -60,7 +60,7 @@ public class BattleShip extends JFrame implements Runnable {
                             e.getY() - Window.getY(0),gameStart); 
 
 
-                    Board.addShip(Ships.Direction.LEFT,Ships.TYPE.thxon,xpos,ypos);
+                    Board.addShip(Ships.Direction.UP,Ships.TYPE.thxon,xpos,ypos);
 
 
                 }
@@ -80,9 +80,7 @@ public class BattleShip extends JFrame implements Runnable {
 
     addMouseMotionListener(new MouseMotionAdapter() {
       public void mouseMoved(MouseEvent e) {
-          int xpos = e.getX();
-          int ypos = e.getY();
-          Board.addShip(Ships.Direction.LEFT,Ships.TYPE.thxon,xpos,ypos);
+         
         repaint();
       }
     });
