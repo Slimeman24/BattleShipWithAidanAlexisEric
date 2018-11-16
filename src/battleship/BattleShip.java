@@ -9,25 +9,30 @@ import javax.swing.*;
 
 public class BattleShip extends JFrame implements Runnable {
 
-     
+/////////Variables
     boolean animateFirstTime = true;
     Image image;
     Graphics2D g;
-//Variables for the player.
    
- 
     int timeCount;
-     int score;
+    int score;
     int highScore = 0;
     boolean gameOver;
    
     TitleScreen screen;
     Image titlescreenImage;
+    Image htpImage;
+    Image oceanImage;
+    Image metalImage;
     
     boolean gameStart = false;
+    boolean HTPshow = false;
     
+<<<<<<< Updated upstream
     int numNpcs = 4;
     int numCoins = 9;
+=======
+>>>>>>> Stashed changes
    
 
   
@@ -41,6 +46,7 @@ public class BattleShip extends JFrame implements Runnable {
     }
 
     public BattleShip() {
+        ////MouseOptions
         addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
                 if (e.BUTTON1 == e.getButton()) {
@@ -56,9 +62,24 @@ public class BattleShip extends JFrame implements Runnable {
 
                     
                     
-                   TitleScreen.ifPClick(e.getX() - Window.getX(0),
-                            e.getY() - Window.getY(0),gameStart); 
+                   if(TitleScreen.ifPClick(e.getX() - Window.getX(0),
+                      e.getY() - Window.getY(0),gameStart, HTPshow))
+                      {
+                          gameStart = true;     
+                      }
 
+                  if(TitleScreen.ifHTPClick(e.getX() - Window.getX(0),
+                      e.getY() - Window.getY(0),gameStart, HTPshow))
+                  {
+                      HTPshow = true;
+                      if(TitleScreen.HTPback(e.getX() - Window.getX(0),
+                      e.getY() - Window.getY(0),HTPshow) == false)
+                    {
+                      HTPshow = false;
+                    }
+                  }
+                  
+                   
 
                     Board.addShip(Ships.Direction.UP,Ships.TYPE.thxon,xpos,ypos);
 
@@ -127,15 +148,19 @@ public class BattleShip extends JFrame implements Runnable {
                     RenderingHints.VALUE_ANTIALIAS_ON);
             Drawing.setDrawingInfo(g,this);
         }
+      ///Drawing Title Screen etc  
         if (gameStart == false)
         {
-       Drawing.setDrawingInfo(g, this);
-       
-        TitleScreen.draw(g, titlescreenImage, this);
+            Drawing.setDrawingInfo(g, this);
+            TitleScreen.draw(g, titlescreenImage, htpImage, oceanImage, this, HTPshow);
+             
+                 
         }
         
+        /// Drawing Board
         if(gameStart)
         {
+            
 //fill background
         g.setColor(Color.DARK_GRAY);
         g.fillRect(0, 0, Window.xsize, Window.ysize);
@@ -143,11 +168,35 @@ public class BattleShip extends JFrame implements Runnable {
         int x[] = {Window.getX(0), Window.getX(Window.getWidth2()), Window.getX(Window.getWidth2()), Window.getX(0), Window.getX(0)};
         int y[] = {Window.getY(0), Window.getY(0), Window.getY(Window.getHeight2()), Window.getY(Window.getHeight2()), Window.getY(0)};
 //fill border
+////Background OCEAN
+for (int zrow=0;zrow<Board.numRows;zrow++)
+        {
+            for (int zcolumn=0;zcolumn<Board.numColumns;zcolumn++)
+            {
+                if (Board.board[zrow][zcolumn] == Board.WALL)
+                {
+                    g.setColor(Color.PINK);
+//                    g.fillRect(Window.getX(0)+zcolumn*Window.getWidth2()/Board.numColumns,
+//                    Window.getY(0)+zrow*Window.getHeight2()/Board.numRows,
+//                    Window.getWidth2()/Board.numColumns,
+//                    Window.getHeight2()/Board.numRows);
+                Drawing.drawImage(metalImage, Window.getX(250), Window.getY(450), 0, 1.5, 1.8);
+                
+                
+                }  
+       
+            }
+              
+        }
         g.setColor(Color.CYAN);
         g.fillPolygon(x, y, 4);
+        Drawing.drawImage(oceanImage, Window.getX(500), Window.getY(250), 0, 1.4, 1.25);
+        Drawing.drawImage(oceanImage, Window.getX(500), Window.getY(700), 180, 1.4, 1.25);
+      
 // draw border
         g.setColor(Color.DARK_GRAY);
         g.drawPolyline(x, y, 5);
+        
 
         if (animateFirstTime) {
             gOld.drawImage(image, 0, 0, null);
@@ -156,7 +205,7 @@ public class BattleShip extends JFrame implements Runnable {
 
          
         
-        g.setColor(Color.DARK_GRAY);
+        g.setColor(Color.BLACK);
 //horizontal lines
         for (int zi=1;zi<Board.numRows;zi++)
         {
@@ -178,11 +227,14 @@ public class BattleShip extends JFrame implements Runnable {
             {
                 if (Board.board[zrow][zcolumn] == Board.WALL)
                 {
-                    g.setColor(Color.gray);
+                    g.setColor(Color.DARK_GRAY);
                     g.fillRect(Window.getX(0)+zcolumn*Window.getWidth2()/Board.numColumns,
                     Window.getY(0)+zrow*Window.getHeight2()/Board.numRows,
                     Window.getWidth2()/Board.numColumns,
                     Window.getHeight2()/Board.numRows);
+               // Drawing.drawImage(metalImage, Window.getX(250), Window.getY(450), 0, 1.5, 1.8);
+                
+                
                 }  
 
        
@@ -207,11 +259,15 @@ public class BattleShip extends JFrame implements Runnable {
               
         }
         
+<<<<<<< Updated upstream
 
         Missiles.paint(g);
         
 
      //   screen.draw(g, titlescreenImage, this);
+=======
+    
+>>>>>>> Stashed changes
         }
 
 
@@ -247,6 +303,7 @@ public class BattleShip extends JFrame implements Runnable {
                 Window.xsize = getSize().width;
                 Window.ysize = getSize().height;
             }
+<<<<<<< Updated upstream
          Missiles.setpictures();
             
 
@@ -254,6 +311,13 @@ public class BattleShip extends JFrame implements Runnable {
           titlescreenImage = Toolkit.getDefaultToolkit().getImage("./titlescreen.JPG");
          
 
+=======
+//Setting up the images for use
+          titlescreenImage = Toolkit.getDefaultToolkit().getImage("./titlescreen.JPG");
+          htpImage = Toolkit.getDefaultToolkit().getImage("./htpback.JPG");
+           oceanImage = Toolkit.getDefaultToolkit().getImage("./oceantop1.JPG");
+          metalImage = Toolkit.getDefaultToolkit().getImage("./metal.JPG");
+>>>>>>> Stashed changes
             reset();
 
         }
