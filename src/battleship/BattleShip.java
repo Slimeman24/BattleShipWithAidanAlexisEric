@@ -24,7 +24,7 @@ public class BattleShip extends JFrame implements Runnable {
     TitleScreen screen;
     Image titlescreenImage;
     
-    boolean gameStart = false;
+    boolean gameStart = true;
     
     int numNpcs = 4;
     int numCoins = 9;
@@ -52,7 +52,7 @@ public class BattleShip extends JFrame implements Runnable {
 
                     
                     TitleScreen.ifPClick(xpos, ypos);
-
+                    Missiles.MoveMissile();
 
                     
                     
@@ -202,6 +202,14 @@ public class BattleShip extends JFrame implements Runnable {
                     Window.getWidth2()/Board.numColumns,
                     Window.getHeight2()/Board.numRows);
                 }  
+                else if (Board.board[zrow][zcolumn] == Board.HIGHLIGHT)
+                {
+                    g.setColor(Color.yellow);
+                    g.fillRect(Window.getX(0)+zcolumn*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+zrow*Window.getHeight2()/Board.numRows,
+                    Window.getWidth2()/Board.numColumns,
+                    Window.getHeight2()/Board.numRows);
+                }  
        
             }
               
@@ -236,6 +244,7 @@ public class BattleShip extends JFrame implements Runnable {
     public void reset() {
 
     Board.reset();
+    Missiles.reset();
 
         
     }
@@ -257,7 +266,20 @@ public class BattleShip extends JFrame implements Runnable {
             reset();
 
         }
+                
         
+        if(Missiles.MS == true){
+            int currCol = 0;
+        while (currCol<= Missiles.curCol)
+        {
+            System.out.println(currCol + " " + Missiles.curCol);
+            currCol++;
+            if(currCol ==Missiles.curCol)
+                break;
+            Missiles.X-=4;
+            
+        }
+        }
 
 
 

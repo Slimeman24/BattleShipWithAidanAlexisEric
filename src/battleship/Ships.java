@@ -20,6 +20,7 @@ public static enum Direction {
 public static enum TYPE {
         thxon,twxon,onxon,
     }; 
+<<<<<<< Updated upstream
 ////////////////////////////////////////////////////////////////////////////////
 public static Ships create(Direction _dir,TYPE _type,int _Y, int _X)
 {
@@ -28,6 +29,16 @@ ships.add(ptr);
 return (ptr);    
 }         
 Ships(Direction _dir,TYPE _type,int _Y,int _X)
+=======
+//////////////////////////////////////////////////////////////////////////////////
+//public static Ships create(Direction _dir,TYPE _type,int _X, int _Y)
+//{
+//Ships ptr = new Ships(_dir,_type,_X,_Y);
+//ships.add(ptr);
+//return (ptr);    
+//}         
+Ships(Direction _dir,TYPE _type,int _X,int _Y)
+>>>>>>> Stashed changes
 {
 dir=_dir;   
 type=_type;
@@ -56,23 +67,46 @@ if(dir==Ships.Direction.DOWN)
 if(Y+(tall-1)<Board.numRows&&Board.board[Y][X]==Board.PATH&&Board.board[Y+(tall-1)][X]==Board.PATH)     
 for(int zi=X;zi<X+Long;zi++)
 for(int zx=Y;zx<Y+tall;zx++)
+<<<<<<< Updated upstream
 Board.board[zx][zi]=Board.SHIP; 
+=======
+{    
+if(zx+tall<Board.numRows&&zi+Long<Board.numColumns&&zi-Long>-1&&zx-tall>-1&&Board.board[zi][zx]==Board.PATH)
+Board.board[zi][zx]=Board.SHIP; 
+else
+{
+//System.out.println("you cant place it there");
+break;
+}
+>>>>>>> Stashed changes
 }
 ////////////////////////////////////////////////////////////////////////////////
 else if(dir==Ships.Direction.UP) 
 {
+<<<<<<< Updated upstream
 if(Y-(tall-1)>-1&&Board.board[Y][X]==Board.PATH&&Board.board[Y-(tall-1)][X]==Board.PATH)
 for(int zi=X;zi<X+Long;zi++)
 for(int zx=Y;zx>Y-tall;zx--)
 Board.board[zx][zi]=Board.SHIP; 
+=======
+//System.out.println("you cant place it there");
+break;
+}
+>>>>>>> Stashed changes
 }
 ////////////////////////////////////////////////////////////////////////////////
 else if(dir==Ships.Direction.RIGHT)   
 {
+<<<<<<< Updated upstream
 if(X+(Long-1)<Board.numColumns&&Board.board[Y][X]==Board.PATH&&Board.board[Y][X+(Long-1)]==Board.PATH)      
 for(int zi=Y;zi<Y+tall;zi++)
 for(int zx=X;zx<X+Long;zx++)
 Board.board[zi][zx]=Board.SHIP; 
+=======
+//System.out.println("you cant place it there");
+break;
+}
+>>>>>>> Stashed changes
 }
 ////////////////////////////////////////////////////////////////////////////////
 else if(dir==Ships.Direction.LEFT)
@@ -81,6 +115,13 @@ if(X-(Long-1)>-1&&Board.board[Y][X]==Board.PATH&&Board.board[Y][X-(Long-1)]==Boa
 for(int zi=Y;zi<Y+tall;zi++)
 for(int zx=X;zx>X-Long;zx--)
 Board.board[zi][zx]=Board.SHIP;    
+<<<<<<< Updated upstream
+=======
+else
+{
+//System.out.println("you cant place it there");
+break;
+>>>>>>> Stashed changes
 }
 
 

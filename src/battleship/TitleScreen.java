@@ -10,6 +10,8 @@ import javax.swing.*;
 
 public class TitleScreen {
     
+    public static int MouseX;
+    public static int MouseY;
 
     
     
@@ -18,13 +20,15 @@ public class TitleScreen {
     
      public static void ifPClick(int xpixel,int ypixel)
     {
-        int x = Window.getWidth2()-25; 
-        int y = Window.getHeight2()/2 +90;
+        MouseX= xpixel;
+        MouseY= ypixel;
+        int x = Window.getWidth2()-25;
+        int y = 270;
         int y2 = Window.getHeight2()/2 -90;
         
         
-           if ((Window.getWidth2()-25)-31<xpixel &&
-               (Window.getWidth2()-25)+30>xpixel &&  
+           if (x-31<xpixel &&
+               x+30>xpixel &&  
                (Window.getHeight2()/2 +90)-60<ypixel && 
                (Window.getHeight2()/2 +90)+59>ypixel)
             {
@@ -38,6 +42,20 @@ public class TitleScreen {
             {
                Missiles.changeLeft();
             }
+            
+
+            if (x-45<xpixel &&
+               x+45>xpixel &&  
+               y-46<ypixel && 
+               y+40>ypixel)
+            {
+                Missiles.Launch();
+              
+            }
+            
+            Missiles.CheckLocHit();            
+            
+            
            
     }
 
@@ -99,7 +117,6 @@ public class TitleScreen {
                PlayYPOS+10>ypixel)
             {
                 gameStart = true;
-                System.out.println("p");
             }
 
            return gameStart;
