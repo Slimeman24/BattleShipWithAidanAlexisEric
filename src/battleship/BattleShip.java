@@ -25,8 +25,12 @@ public class BattleShip extends JFrame implements Runnable {
     Image oceanImage;
     Image metalImage;
     
+<<<<<<< HEAD
     boolean gameStart = false;
     boolean HTPshow = false;
+=======
+    boolean gameStart = true;
+>>>>>>> f63a12fecf65c7c2d214fd15f5bad3780fdfb1f2
     
 <<<<<<< Updated upstream
     int numNpcs = 4;
@@ -58,7 +62,7 @@ public class BattleShip extends JFrame implements Runnable {
 
                     
                     TitleScreen.ifPClick(xpos, ypos);
-
+                    Missiles.MoveMissile();
 
                     
                     
@@ -254,6 +258,14 @@ for (int zrow=0;zrow<Board.numRows;zrow++)
                     Window.getWidth2()/Board.numColumns,
                     Window.getHeight2()/Board.numRows);
                 }  
+                else if (Board.board[zrow][zcolumn] == Board.HIGHLIGHT)
+                {
+                    g.setColor(Color.yellow);
+                    g.fillRect(Window.getX(0)+zcolumn*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+zrow*Window.getHeight2()/Board.numRows,
+                    Window.getWidth2()/Board.numColumns,
+                    Window.getHeight2()/Board.numRows);
+                }  
        
             }
               
@@ -292,6 +304,7 @@ for (int zrow=0;zrow<Board.numRows;zrow++)
     public void reset() {
 
     Board.reset();
+    Missiles.reset();
 
         
     }
@@ -321,7 +334,20 @@ for (int zrow=0;zrow<Board.numRows;zrow++)
             reset();
 
         }
+                
         
+        if(Missiles.MS == true){
+            int currCol = 0;
+        while (currCol<= Missiles.curCol)
+        {
+            System.out.println(currCol + " " + Missiles.curCol);
+            currCol++;
+            if(currCol ==Missiles.curCol)
+                break;
+            Missiles.X-=4;
+            
+        }
+        }
 
 
 

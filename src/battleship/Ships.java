@@ -20,6 +20,7 @@ public static enum Direction {
 public static enum TYPE {
         thxon,twxon,onxon,
     }; 
+<<<<<<< Updated upstream
 ////////////////////////////////////////////////////////////////////////////////
 public static Ships create(Direction _dir,TYPE _type,int _Y, int _X)
 {
@@ -28,6 +29,16 @@ ships.add(ptr);
 return (ptr);    
 }         
 Ships(Direction _dir,TYPE _type,int _Y,int _X)
+=======
+//////////////////////////////////////////////////////////////////////////////////
+//public static Ships create(Direction _dir,TYPE _type,int _X, int _Y)
+//{
+//Ships ptr = new Ships(_dir,_type,_X,_Y);
+//ships.add(ptr);
+//return (ptr);    
+//}         
+Ships(Direction _dir,TYPE _type,int _X,int _Y)
+>>>>>>> Stashed changes
 {
 dir=_dir;   
 type=_type;
@@ -60,7 +71,11 @@ for(int zx=Y;zx<Y+tall;zx++)
 Board.board[zx][zi]=Board.SHIP; 
 =======
 {    
+<<<<<<< HEAD
 if(zx-tall<Board.numRows&&zi+Long>-1&&zi+Long<Board.numColumns&&Board.board[zi][zx]==Board.PATH)
+=======
+if(zx+tall<Board.numRows&&zi+Long<Board.numColumns&&zi-Long>-1&&zx-tall>-1&&Board.board[zi][zx]==Board.PATH)
+>>>>>>> f63a12fecf65c7c2d214fd15f5bad3780fdfb1f2
 Board.board[zi][zx]=Board.SHIP; 
 else
 {
