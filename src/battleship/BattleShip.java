@@ -18,25 +18,22 @@ public class BattleShip extends JFrame implements Runnable {
     int score;
     int highScore = 0;
     boolean gameOver;
-   
+    boolean setShips=false;
+    Ships.Direction dir=Ships.Direction.UP;
+    Ships.TYPE type=Ships.TYPE.onxon;
     TitleScreen screen;
     Image titlescreenImage;
     Image htpImage;
     Image oceanImage;
     Image metalImage;
     
-<<<<<<< HEAD
-    boolean gameStart = false;
+
+    //boolean gameStart = false;
     boolean HTPshow = false;
-=======
+
     boolean gameStart = true;
->>>>>>> f63a12fecf65c7c2d214fd15f5bad3780fdfb1f2
-    
-<<<<<<< Updated upstream
     int numNpcs = 4;
     int numCoins = 9;
-=======
->>>>>>> Stashed changes
    
 
   
@@ -62,6 +59,7 @@ public class BattleShip extends JFrame implements Runnable {
 
                     
                     TitleScreen.ifPClick(xpos, ypos);
+                    
                     Missiles.MoveMissile();
 
                     
@@ -85,13 +83,16 @@ public class BattleShip extends JFrame implements Runnable {
                   
                    
 
-                    Board.addShip(Ships.Direction.UP,Ships.TYPE.thxon,xpos,ypos);
+                    
 
 
                 }
                 if (e.BUTTON3 == e.getButton()) {
                     //right button
-                    reset();
+                    int xpos = e.getX();
+                    int ypos = e.getY();
+                    Board.addShip(dir,type,xpos,ypos);
+                    
                 }
                 repaint();
             }
@@ -114,16 +115,62 @@ public class BattleShip extends JFrame implements Runnable {
 
             public void keyPressed(KeyEvent e) {
 //add or modify.  Move the player with the arrow keys.
+//Size//////////////////////////////////////////////////////////////////////////
                 if (e.VK_W == e.getKeyCode()) {
-                   
-                    
-                } else if (e.VK_S == e.getKeyCode()) {
-                    
-                } else if (e.VK_A == e.getKeyCode()) {
-                    
-                } else if (e.VK_D == e.getKeyCode()) {
-                    
+                if(type==Ships.TYPE.onxon)
+                type=Ships.TYPE.twxon;
+                
+                else if(type==Ships.TYPE.twxon)
+                type=Ships.TYPE.thxon;
+                
+                else if(type==Ships.TYPE.thxon)
+                type=Ships.TYPE.foxon;   
+                
+                else if(type==Ships.TYPE.foxon)
+                type=Ships.TYPE.twxtw; 
+                
+                else if(type==Ships.TYPE.twxtw)
+                type=Ships.TYPE.thxtw; 
+                
+                else if(type==Ships.TYPE.thxtw)
+                type=Ships.TYPE.onxon; 
+                } 
+////                
+                else if (e.VK_S == e.getKeyCode()) {
+                if(type==Ships.TYPE.onxon)
+                type=Ships.TYPE.foxon;
+                
+                else if(type==Ships.TYPE.twxon)
+                type=Ships.TYPE.onxon;
+                
+                else if(type==Ships.TYPE.thxon)
+                type=Ships.TYPE.twxon;  
+                
+                else if(type==Ships.TYPE.foxon)
+                type=Ships.TYPE.thxon;  
+                } 
+////////////////////////////////////////////////////////////////////////////////                
+                else if (e.VK_A == e.getKeyCode()) {
+               
+                if(dir==Ships.Direction.UP)
+                dir=Ships.Direction.LEFT;
+                
+                else if(dir==Ships.Direction.LEFT)
+                dir=Ships.Direction.DOWN;
+                
+                else if(dir==Ships.Direction.DOWN)
+                dir=Ships.Direction.RIGHT;  
+                
+                else if(dir==Ships.Direction.RIGHT)
+                dir=Ships.Direction.UP;
+                
+                
+                } 
+                
+                else if (e.VK_ESCAPE == e.getKeyCode()) {
+                reset();    
                 }
+                
                 repaint();
             }
         });
@@ -271,16 +318,12 @@ for (int zrow=0;zrow<Board.numRows;zrow++)
               
         }
         
-<<<<<<< Updated upstream
 
         Missiles.paint(g);
         
 
      //   screen.draw(g, titlescreenImage, this);
-=======
-    
->>>>>>> Stashed changes
-        }
+      }
 
 
         gOld.drawImage(image, 0, 0, null);
@@ -316,7 +359,6 @@ for (int zrow=0;zrow<Board.numRows;zrow++)
                 Window.xsize = getSize().width;
                 Window.ysize = getSize().height;
             }
-<<<<<<< Updated upstream
          Missiles.setpictures();
             
 
@@ -324,13 +366,11 @@ for (int zrow=0;zrow<Board.numRows;zrow++)
           titlescreenImage = Toolkit.getDefaultToolkit().getImage("./titlescreen.JPG");
          
 
-=======
 //Setting up the images for use
           titlescreenImage = Toolkit.getDefaultToolkit().getImage("./titlescreen.JPG");
           htpImage = Toolkit.getDefaultToolkit().getImage("./htpback.JPG");
            oceanImage = Toolkit.getDefaultToolkit().getImage("./oceantop1.JPG");
           metalImage = Toolkit.getDefaultToolkit().getImage("./metal.JPG");
->>>>>>> Stashed changes
             reset();
 
         }
@@ -340,7 +380,6 @@ for (int zrow=0;zrow<Board.numRows;zrow++)
             int currCol = 0;
         while (currCol<= Missiles.curCol)
         {
-            System.out.println(currCol + " " + Missiles.curCol);
             currCol++;
             if(currCol ==Missiles.curCol)
                 break;

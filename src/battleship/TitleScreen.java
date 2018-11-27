@@ -64,14 +64,12 @@ public class TitleScreen {
    
    private static int  HTPXPOS = Window.getWidth2()/2 -80;
    private static int  HTPYPOS = Window.getHeight2()/4 * 3;
-<<<<<<< Updated upstream
- 
-=======
+
     
    private static int  HTPXPOSb = Window.getWidth2() - Window.getWidth2()+ 7;
    private static int  HTPYPOSb = Window.getHeight2() - 1 ;
     
->>>>>>> Stashed changes
+
    
     TitleScreen ()
     {
@@ -153,10 +151,10 @@ public class TitleScreen {
                PlayYPOS+10>ypixel)
             {
                 gameStart = true;
-<<<<<<< HEAD
+
                 System.out.println("PLAY");
-=======
->>>>>>> f63a12fecf65c7c2d214fd15f5bad3780fdfb1f2
+
+
             }
 
            return gameStart;
@@ -176,10 +174,7 @@ public class TitleScreen {
                  System.out.println("HTP");
             }
 
-<<<<<<< Updated upstream
-           
 
-=======
            return HTPshow;
     }
     
@@ -199,6 +194,5 @@ public class TitleScreen {
             }
         
            return HTPshow;
->>>>>>> Stashed changes
     }
 }
