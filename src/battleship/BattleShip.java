@@ -13,7 +13,12 @@ public class BattleShip extends JFrame implements Runnable {
     boolean animateFirstTime = true;
     Image image;
     Graphics2D g;
+<<<<<<< Updated upstream
  
+=======
+//Variables for the player.
+
+>>>>>>> Stashed changes
     int timeCount;
     int score;
     int highScore = 0;
@@ -25,6 +30,7 @@ public class BattleShip extends JFrame implements Runnable {
     Image titlescreenImage;
     Image htpImage;
     Image oceanImage;
+<<<<<<< Updated upstream
     Image metalImage;
     
 
@@ -32,8 +38,21 @@ public class BattleShip extends JFrame implements Runnable {
     boolean HTPshow = false;
 
     boolean gameStart = true;
+=======
+    public static Image metalImage;
+    public static int i =0;
+    public static boolean P1;
+    public static boolean changing;
+    public static boolean testing2;
+    public static boolean Timed=true;
+
+    boolean gameStart = false;
+    boolean HTPshow = false;
+    public static boolean MissileMenu = false;
+    public static boolean thing=true;
+
+>>>>>>> Stashed changes
     int numNpcs = 4;
-    int numCoins = 9;
    
 
   
@@ -59,7 +78,7 @@ public class BattleShip extends JFrame implements Runnable {
 
                     
                     TitleScreen.ifPClick(xpos, ypos);
-                    
+
                     Missiles.MoveMissile();
 
                     
@@ -81,7 +100,10 @@ public class BattleShip extends JFrame implements Runnable {
                     }
                   }
                   
+<<<<<<< Updated upstream
                    
+=======
+>>>>>>> Stashed changes
 
                     
 
@@ -188,10 +210,8 @@ public class BattleShip extends JFrame implements Runnable {
     public void destroy() {
     }
 
-
-
-////////////////////////////////////////////////////////////////////////////
-    public void paint(Graphics gOld) {
+//////////////////////////////////////////////////////////////////////////////
+   public void paint(Graphics gOld) {
         if (image == null || Window.xsize != getSize().width || Window.ysize != getSize().height) {
             Window.xsize = getSize().width;
             Window.ysize = getSize().height;
@@ -207,7 +227,15 @@ public class BattleShip extends JFrame implements Runnable {
             Drawing.setDrawingInfo(g, this);
             TitleScreen.draw(g, titlescreenImage, htpImage, oceanImage, this, HTPshow);
              
+<<<<<<< Updated upstream
                  
+=======
+            if(MissileMenu){
+            Drawing.drawMissileHelp();
+               
+        
+            }
+>>>>>>> Stashed changes
         }
         
         /// Drawing Board
@@ -233,7 +261,11 @@ for (int zrow=0;zrow<Board.numRows;zrow++)
 //                    Window.getY(0)+zrow*Window.getHeight2()/Board.numRows,
 //                    Window.getWidth2()/Board.numColumns,
 //                    Window.getHeight2()/Board.numRows);
+<<<<<<< Updated upstream
                 Drawing.drawImage(metalImage, Window.getX(250), Window.getY(450), 0, 1.5, 1.8);
+=======
+               // Drawing.drawImage(metalImage, Window.getX(250), Window.getY(450), 0, 1.5, 1.8);
+>>>>>>> Stashed changes
                 
                 
                 }  
@@ -294,14 +326,13 @@ for (int zrow=0;zrow<Board.numRows;zrow++)
             }
               
         }
-        
         for (int zrow=0;zrow<Board.numRows;zrow++)
         {
             for (int zcolumn=0;zcolumn<Board.numColumns;zcolumn++)
             {
                 if (Board.board[zrow][zcolumn] == Board.SHIP && setShips == true||Board.board[zrow][zcolumn] == Board.SANK)
                 {
-                    g.setColor(Color.red);
+                    g.setColor(Color.green);
                     g.fillRect(Window.getX(0)+zcolumn*Window.getWidth2()/Board.numColumns,
                     Window.getY(0)+zrow*Window.getHeight2()/Board.numRows,
                     Window.getWidth2()/Board.numColumns,
@@ -314,22 +345,109 @@ for (int zrow=0;zrow<Board.numRows;zrow++)
                     Window.getY(0)+zrow*Window.getHeight2()/Board.numRows,
                     Window.getWidth2()/Board.numColumns,
                     Window.getHeight2()/Board.numRows);
+                }
+                else if (Board.board[zrow][zcolumn] == Board.MISS)
+                {
+                    g.setColor(Color.blue);
+                    g.fillRect(Window.getX(0)+zcolumn*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+zrow*Window.getHeight2()/Board.numRows,
+                    Window.getWidth2()/Board.numColumns,
+                    Window.getHeight2()/Board.numRows);
                 }  
+                else if (Board.board[zrow][zcolumn] == Board.HIT)
+                {
+                    g.setColor(Color.red);
+                    g.fillRect(Window.getX(0)+zcolumn*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+zrow*Window.getHeight2()/Board.numRows,
+                    Window.getWidth2()/Board.numColumns,
+                    Window.getHeight2()/Board.numRows);
+                }  
+<<<<<<< Updated upstream
+                else if (Board.board[zrow][zcolumn] == Board.HIGHLIGHT)
+                {
+                    g.setColor(Color.yellow);
+                    g.fillRect(Window.getX(0)+zcolumn*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+zrow*Window.getHeight2()/Board.numRows,
+                    Window.getWidth2()/Board.numColumns,
+                    Window.getHeight2()/Board.numRows);
+                }  
+=======
+                
+>>>>>>> Stashed changes
        
             }
               
         }
-        
-
         Missiles.paint(g);
         
+<<<<<<< Updated upstream
 
      //   screen.draw(g, titlescreenImage, this);
       }
+=======
+         if(changing){
+            if(BattleShip.thing){  /////////// Makes a timed thing that goes just the right time for an explosion at the spot of impact
+                g.setColor(Color.black);
+                g.setFont(new Font("Arial",Font.PLAIN,40));
+                g.drawString("Get Ready To Change Players ",200, 250);
+                BattleShip.i++;
+                if(BattleShip.i==100){
+                    BattleShip.thing=false;
+                    BattleShip.testing2=true;
+                    Timed = true;
+                    i=0;
+                }
+            }           
+        }
+         if(testing2 && P1 == false){
+            if(Timed){
+                g.setColor(Color.black);
+                g.fillRect(0, 0, 1100,1000); 
+                g.setColor(Color.white);
+                g.setFont(new Font("Arial",Font.PLAIN,40));
+                g.drawString("Player1 Look Away",200, 250);
+                i++;    
+                if(BattleShip.i>=50){
+                g.drawString("Player2 Get Ready ",200, 320);
+                
+                }
+                if(BattleShip.i==100){
+                    Timed=false;
+                    testing2 = false;
+                    i=0;
+                }
+                Board.changingBoard();
+            }
+         }
+                 
+         else if(testing2 && P1){
+            if(Timed){
+                g.setColor(Color.black);
+                g.fillRect(0, 0, 1100,1000); 
+                g.setColor(Color.white);
+                g.setFont(new Font("Arial",Font.PLAIN,40));
+                g.drawString("Player2 Look Away",200, 250);
+                i++;    
+                if(BattleShip.i>=50){
+                g.drawString("Player1 Get Ready ",200, 320);
+                
+                }
+                if(BattleShip.i==100){
+                    Timed=false;
+                    testing2 = false;
+                    i=0;
+                }        
+            }
+            Board.changingBoard2();
+         }
+         
+        }
+>>>>>>> Stashed changes
 
 
         gOld.drawImage(image, 0, 0, null);
     }
+
 
 ////////////////////////////////////////////////////////////////////////////
 // needed for     implement runnable
@@ -350,6 +468,19 @@ for (int zrow=0;zrow<Board.numRows;zrow++)
 
     Board.reset();
     Missiles.reset();
+<<<<<<< Updated upstream
+=======
+    MissileMenu =false;
+    i=0;
+    thing = true;
+    gameStart = false;
+    HTPshow = false;
+    P1 = true;
+    changing =false;
+    testing2 =false;
+    Timed=true;
+    
+>>>>>>> Stashed changes
 
         
     }
@@ -363,10 +494,10 @@ for (int zrow=0;zrow<Board.numRows;zrow++)
             }
          Missiles.setpictures();
             
-
-
           titlescreenImage = Toolkit.getDefaultToolkit().getImage("./titlescreen.JPG");
-         
+          htpImage = Toolkit.getDefaultToolkit().getImage("./htpback.JPG");
+          oceanImage = Toolkit.getDefaultToolkit().getImage("./oceantop1.JPG");
+          metalImage = Toolkit.getDefaultToolkit().getImage("./metal.JPG");
 
 //Setting up the images for use
           titlescreenImage = Toolkit.getDefaultToolkit().getImage("./titlescreen.JPG");
@@ -375,6 +506,7 @@ for (int zrow=0;zrow<Board.numRows;zrow++)
           metalImage = Toolkit.getDefaultToolkit().getImage("./metal.JPG");
             reset();
 
+<<<<<<< Updated upstream
         }
                 
         
@@ -408,7 +540,27 @@ for (int zrow=0;zrow<Board.numRows;zrow++)
              
            
         
+=======
+        }   
+        Missiles.Missileanimate();    
+      
+     //   if(Missiles.MS){
+//        if(P1==false && testing2 ==false){
+//            
+//        if(timeCount%30==29){
+//            changing = true;
+//        }
+//        }
+//        else if (P1 && testing2 == false){
+//        if(timeCount%30==29){
+//            changing = true;
+//        }
+//     //   }
+//        
+//        }
+>>>>>>> Stashed changes
         
+    timeCount++;
     }
    
 ////////////////////////////////////////////////////////////////////////////
