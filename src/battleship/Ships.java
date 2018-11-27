@@ -19,7 +19,7 @@ public static enum Direction {
         LEFT,RIGHT,UP,DOWN
     }; 
 public static enum TYPE {
-        thxon,twxon,onxon,foxon,twxtw,thxtw
+        thxon,twxon,onxon,foxon,fixon
     }; 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -46,7 +46,7 @@ setlocal();
 ////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////
-public void setShow(boolean is)
+public static void setShow(boolean is)
 {
 show=is;
 }   
@@ -56,10 +56,11 @@ public void setlocal()
     
 if(dir==Ships.Direction.DOWN)   
 {    
-if(Y+tall<Board.numColumns&&Y+tall>-1&&X+Long<Board.numRows&&X+Long>-1)        
+if(Y+tall<Board.numRows) 
+{    
 for(int zi=X;zi<X+Long;zi++)
 for(int zx=Y;zx<Y+tall;zx++)
-if(zi>Board.numColumns&&zi>-1&&zx<Board.numRows&&zx>-1&&Board.board[zi][zx]!=Board.PATH)
+if(Board.board[zx][zi]!=Board.PATH)
 stop=true;    
 if(!stop)  
 {    
@@ -68,15 +69,17 @@ for(int zx=Y;zx<Y+tall;zx++)
 Board.board[zx][zi]=Board.SHIP;  
 }
 }
+}
 
 
 ////////////////////////////////////////////////////////////////////////////////
 else if(dir==Ships.Direction.UP) 
 {    
-if(Y+tall<Board.numColumns&&Y+tall>-1&&X+Long<Board.numRows&&X+Long>-1)        
+if(Y-tall>-1) 
+{    
 for(int zi=X;zi<X+Long;zi++)
 for(int zx=Y;zx>Y-tall;zx--)
-if(zi>Board.numColumns&&zi>-1&&zx<Board.numRows&&zx>-1&&Board.board[zi][zx]!=Board.PATH)
+if(Board.board[zx][zi]!=Board.PATH)
 stop=true;    
 if(!stop)  
 {    
@@ -85,15 +88,17 @@ for(int zx=Y;zx>Y-tall;zx--)
 Board.board[zx][zi]=Board.SHIP; 
 }
 }
+}
 
 
 ////////////////////////////////////////////////////////////////////////////////
 else if(dir==Ships.Direction.RIGHT)   
 {    
-if(Y+tall<Board.numColumns&&Y+tall>-1&&X+Long<Board.numRows&&X+Long>-1)    
+if(X+Long<Board.numColumns) 
+{    
 for(int zi=Y;zi<Y+tall;zi++)
 for(int zx=X;zx<X+Long;zx++)
-if(zi<Board.numColumns&&zi>-1&&zx<Board.numRows&&zx>-1&&Board.board[zi][zx]!=Board.PATH)
+if(Board.board[zi][zx]!=Board.PATH)
 stop=true;    
 if(!stop)
 {    
@@ -102,21 +107,24 @@ for(int zx=X;zx<X+Long;zx++)
 Board.board[zi][zx]=Board.SHIP; 
 }
 }
+}
 
 
 ////////////////////////////////////////////////////////////////////////////////
 else if(dir==Ships.Direction.LEFT)  
 {   
-if(Y+tall<Board.numColumns&&Y+tall>-1&&X+Long<Board.numRows&&X+Long>-1)        
+if(X-Long>-1) 
+{        
 for(int zi=Y;zi<Y+tall;zi++)
 for(int zx=X;zx>X-Long;zx--)    
-if(zi>Board.numColumns&&zi>-1&&zx<Board.numRows&&zx>-1&&Board.board[zi][zx]!=Board.PATH)
+if(Board.board[zi][zx]!=Board.PATH)
 stop=true;    
 if(!stop)
 {    
 for(int zi=Y;zi<Y+tall;zi++)
 for(int zx=X;zx>X-Long;zx--)
 Board.board[zi][zx]=Board.SHIP;  
+}
 }
 }
 
@@ -180,25 +188,21 @@ tall=4;
 }
 }  
 
-else if(type==TYPE.twxtw)
-{
-Long=2;
-tall=2;
-}  
-
-else if(type==TYPE.thxtw)
+else if(type==TYPE.fixon)
 {
 if(dir==Direction.LEFT||dir==Direction.RIGHT)
 {
-Long=3;
-tall=2;
+Long=5;
+tall=1;
 }
 else
 {    
-Long=2;
-tall=3;
+Long=1;
+tall=5;
 }
 }  
+
+
 
 }
 ////////////////////////////////////////////////////////////////////////////////
@@ -251,6 +255,12 @@ if(Board.board[zx][zi]==Board.SANK)
 HP--;
 }
 }
+
+if(HP<=0)
+{
+ships.remove(this);
+}    
+
 }
 ////////////////////////////////////////////////////////////////////////////////
 }

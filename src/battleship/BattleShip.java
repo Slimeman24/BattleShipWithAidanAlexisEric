@@ -13,12 +13,12 @@ public class BattleShip extends JFrame implements Runnable {
     boolean animateFirstTime = true;
     Image image;
     Graphics2D g;
-   
+ 
     int timeCount;
     int score;
     int highScore = 0;
     boolean gameOver;
-    boolean setShips=false;
+    boolean setShips=true;
     Ships.Direction dir=Ships.Direction.UP;
     Ships.TYPE type=Ships.TYPE.onxon;
     TitleScreen screen;
@@ -127,18 +127,17 @@ public class BattleShip extends JFrame implements Runnable {
                 type=Ships.TYPE.foxon;   
                 
                 else if(type==Ships.TYPE.foxon)
-                type=Ships.TYPE.twxtw; 
+                type=Ships.TYPE.fixon; 
                 
-                else if(type==Ships.TYPE.twxtw)
-                type=Ships.TYPE.thxtw; 
-                
-                else if(type==Ships.TYPE.thxtw)
+                else if(type==Ships.TYPE.fixon)
                 type=Ships.TYPE.onxon; 
+                
+                
                 } 
 ////                
                 else if (e.VK_S == e.getKeyCode()) {
                 if(type==Ships.TYPE.onxon)
-                type=Ships.TYPE.foxon;
+                type=Ships.TYPE.fixon;
                 
                 else if(type==Ships.TYPE.twxon)
                 type=Ships.TYPE.onxon;
@@ -148,6 +147,9 @@ public class BattleShip extends JFrame implements Runnable {
                 
                 else if(type==Ships.TYPE.foxon)
                 type=Ships.TYPE.thxon;  
+                
+                else if(type==Ships.TYPE.fixon)
+                type=Ships.TYPE.foxon; 
                 } 
 ////////////////////////////////////////////////////////////////////////////////                
                 else if (e.VK_A == e.getKeyCode()) {
@@ -297,7 +299,7 @@ for (int zrow=0;zrow<Board.numRows;zrow++)
         {
             for (int zcolumn=0;zcolumn<Board.numColumns;zcolumn++)
             {
-                if (Board.board[zrow][zcolumn] == Board.SHIP)
+                if (Board.board[zrow][zcolumn] == Board.SHIP && setShips == true||Board.board[zrow][zcolumn] == Board.SANK)
                 {
                     g.setColor(Color.red);
                     g.fillRect(Window.getX(0)+zcolumn*Window.getWidth2()/Board.numColumns,
